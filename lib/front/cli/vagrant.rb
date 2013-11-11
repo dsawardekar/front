@@ -1,7 +1,5 @@
 module Front
   module CLI
-    require 'resque'
-
     class Vagrant
       attr_reader :id
       attr_reader :path
@@ -72,53 +70,10 @@ module Front
         end
       end
 
-      def run2(cmd)
-        options = {}
-        options[:chdir] = path
-        unless wait
-          log_file = "#{path}/front.log"
-          options[:out] = log_file
-          options[:err] = log_file
-        end
-
-        pid = Kernel.spawn("vagrant #{cmd}", options)
-        if wait
-          Process.wait pid
-        else
-          Process.detach pid
-        end
-      end
-
       def capture(cmd)
         Dir.chdir(path) do
           `vagrant #{cmd}`
         end
-      end
-    end
-
-    class VagrantWorker
-      @queue = :vagrant
-
-      def self.perform(task)
-        cmd = task.cmd
-        options = task.options
-        options[:out] = task.log_file
-        options[:err] = task.log_file
-
-        pid = Kernel.spawn(cmd, options)
-        Process.wait pid
-      end
-    end
-
-    class VagrantTask
-      attr_accessor :cmd
-      attr_accessor :options
-      attr_accessor :log_file
-
-      def initialize(cmd, options, log_file)
-        @cmd = cmd
-        @options = options
-        @log_file = log_file
       end
     end
   end
