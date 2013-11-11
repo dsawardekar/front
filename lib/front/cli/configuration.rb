@@ -10,7 +10,7 @@ module Front
         options = OpenStruct.new
         options.action = nil
         options.error = nil
-        options.pool_size = 4
+        options.pool_size = 2
 
         parse(args, options)
       end
