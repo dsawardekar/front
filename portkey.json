@@ -1,0 +1,11 @@
+{
+  "lib/front/cli/*.rb": {
+    "type": "cli",
+    "test": "spec/front/cli/%s_spec.rb"
+  },
+
+  "test/front/cli/*_spec.rb": {
+    "type": "spec",
+    "alternate": "lib/front/cli/%s.rb"
+  }
+}
