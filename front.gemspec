@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Front::VERSION
   spec.authors       = ["Darshan Sawardekar"]
   spec.email         = ["darshan@sawardekar.org"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{Speed up your Vagrant workflow}
+  spec.summary       = %q{Booting up a fresh virtual machine takes time. `Front` speeds up VM boot time by preinitializing a pool of VMs. When you need a fresh instance, use `front next` and you are ready to work instantly. And while you work it rebuilds the old VM for your next refill!}
+  spec.homepage      = "https://github.com/dsawardekar/front"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)

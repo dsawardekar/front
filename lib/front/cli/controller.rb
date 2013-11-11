@@ -40,6 +40,10 @@ module Front
         puts File.read(@pool.get_inventory_file())
       end
 
+      def status
+        @pool.status
+      end
+
       # errors
       def show_invalid_option
         show_error @options.error
@@ -67,6 +71,10 @@ module Front
       # help
       def show_help
         puts @options.opts
+      end
+
+      def show_version
+        puts VERSION
       end
     end
   end
