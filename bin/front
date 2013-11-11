@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require File.expand_path('../../lib/front/loader', __FILE__)
+
+module Front
+  require 'front/cli/app'
+
+  app = Front::CLI::App.new
+  app.start(ARGV)
+end
