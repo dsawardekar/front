@@ -29,14 +29,20 @@ module Front
 
       def load
         loaded = false
+        first_vagrant = nil
         get_pool_size().times do |index|
           vagrant = get_vagrant(index + 1)
           vagrant.wait = !loaded
           vagrant.up
 
+          unless loaded
+            first_vagrant = vagrant
+          end
+
           loaded = true
         end
 
+        update_inventory(first_vagrant)
         @script.run
       end
 
