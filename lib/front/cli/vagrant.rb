@@ -38,7 +38,8 @@ module Front
         re = /^\s*Port\s*(\d+)$/m
 
         matches = output.match(re)
-        return matches[1]
+        return matches[1] unless matches.nil?
+        return '2222'
       end
 
       def status
